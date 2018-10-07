@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CircleControl : MonoBehaviour {
 	[SerializeField]
-	private float speed;
+	public float speed;
     public GameObject prefab;
     public GameObject colprefab;
     private bool flag;

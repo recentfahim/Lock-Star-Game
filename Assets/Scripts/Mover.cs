@@ -16,7 +16,8 @@ public class Mover : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Wrong");
+                //Debug.Log("Wrong");
+                FindObjectOfType<GameManager>().EndGame();
             }
         }
     }
@@ -25,23 +26,17 @@ public class Mover : MonoBehaviour {
     {
         if (col.gameObject.tag == "star")
         {
-            Debug.Log("fahim-trigger");
+            //Debug.Log("trigger");
             ScoreText.score += 1;
             check = true;
         }
         if(col.gameObject.tag == "coll")
         {
-            Debug.Log("Game Should Over........");
+            FindObjectOfType<GameManager>().EndGame();
+            //Debug.Log("Game Over");
             Destroy(this.gameObject);
 
         }
     }
 
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		if (col.gameObject.tag == "star")
-		{
-			Debug.Log("fahim - collision2d");
-		}
-	}
 }
