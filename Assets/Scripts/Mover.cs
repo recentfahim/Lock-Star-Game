@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour {
 
-	
-	void OnTriggerEnter2D(Collider2D col)
+    private bool check;
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (check)
+            {
+                Debug.Log("Right");
+                check = false;
+            }
+            else
+            {
+                Debug.Log("Wrong");
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "star")
         {
             Debug.Log("fahim-trigger");
             ScoreText.score += 1;
+            check = true;
         }
         if(col.gameObject.tag == "coll")
         {
