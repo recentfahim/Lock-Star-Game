@@ -14,6 +14,8 @@ public class CircleControl : MonoBehaviour {
     private int colrand;
     private int randdis;
     private int prevrand;
+    [SerializeField]
+    private AudioSource audios;
 
     Vector3 center;
 	// Use this for initialization
@@ -23,6 +25,7 @@ public class CircleControl : MonoBehaviour {
         //putting value while start
         randdis = 0;
         prevrand = 0;
+        audios = GetComponent<AudioSource>();
 
     }
 
@@ -59,76 +62,98 @@ public class CircleControl : MonoBehaviour {
         }
         
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetMouseButtonDown(0)){
-			if(GameObject.FindGameObjectWithTag("star")){
-				Destroy(GameObject.FindGameObjectWithTag("star"));
-			}
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!FindObjectOfType<GameManager>().gameHasEnded)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                
+                if (GameObject.FindGameObjectWithTag("star"))
+                {
+                    Destroy(GameObject.FindGameObjectWithTag("star"));
+                }
+                if (GameObject.FindGameObjectWithTag("coll"))
+                {
+                    Destroy(GameObject.FindGameObjectWithTag("coll"));
+                }
+
+                if (flag == true)
+                {
+                    flag = false;
+                }
+                else
+                {
+                    flag = true;
+                }
+                rand = Random.Range(1, 360);
+
+                randdis = Mathf.Abs(rand - prevrand);
+                if (randdis > 40)
+                {
+                    Debug.Log("Ok");
+                }
+                else
+                {
+                    for (int i = 0; i < 20; i++)
+                    {
+                        rand = Random.Range(1, 360);
+
+                        randdis = Mathf.Abs(rand - prevrand);
+                        if (randdis > 40)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            prevrand = rand;
+                        }
+
+                    }
+
+                }
+                Vector3 pos = RandomCircle(center, radius, rand);
+
+                Instantiate(prefab, pos, Quaternion.identity);
+                if (flag)
+                {
+                    colrand = rand - 10;
+                    Vector3 colpos = RandomCircle(center, radius, colrand);
+                    Instantiate(colprefab, colpos, Quaternion.identity);
+                }
+                else
+                {
+                    colrand = rand + 10;
+                    Vector3 colpos = RandomCircle(center, radius, colrand);
+                    Instantiate(colprefab, colpos, Quaternion.identity);
+                }
+                audios.Play();
+
+            }
+        }
+        else
+        {
+            if (GameObject.FindGameObjectWithTag("star"))
+            {
+                Destroy(GameObject.FindGameObjectWithTag("star"));
+            }
             if (GameObject.FindGameObjectWithTag("coll"))
             {
                 Destroy(GameObject.FindGameObjectWithTag("coll"));
             }
-
-            if (flag == true){
-				flag = false;
-			}
-			else{
-				flag = true;
-			}
-            rand = Random.Range(1, 360);
-
-            randdis = Mathf.Abs(rand - prevrand);
-            if (randdis > 40)
-            {
-                Debug.Log("Ok");
-            }
-            else
-            {
-                for (int i = 0; i < 20; i++)
-                {
-                    rand = Random.Range(1, 360);
-
-                    randdis = Mathf.Abs(rand - prevrand);
-                    if (randdis > 40)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        prevrand = rand;
-                    }
-
-                }
-
-            }
-		    Vector3 pos = RandomCircle(center, radius ,rand);
-        
-            Instantiate(prefab, pos, Quaternion.identity);
-            if (flag)
-            {
-                colrand = rand - 10;
-                Vector3 colpos = RandomCircle(center, radius, colrand);
-                Instantiate(colprefab, colpos, Quaternion.identity);
-            }
-            else
-            {
-                colrand = rand + 10;
-                Vector3 colpos = RandomCircle(center, radius, colrand);
-                Instantiate(colprefab, colpos, Quaternion.identity);
-            }
-
         }
+
         if (flag)
-        {
-            transform.Rotate(0, 0, speed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Rotate(0, 0, -speed * Time.deltaTime);
-            
-        }
+            {
+                transform.Rotate(0, 0, speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Rotate(0, 0, -speed * Time.deltaTime);
+
+            }
 
 
     }

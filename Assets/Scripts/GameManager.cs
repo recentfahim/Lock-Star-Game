@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    private bool gameHasEnded = false;
+    public bool gameHasEnded = false;
     public float restartdelay = 5f;
     public GameObject gameoverui;
     private IEnumerator coroutine;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     {
         if(gameHasEnded == false)
         {
-            StartCoroutine(Reset());
+            StartCoroutine(Waitforsec());
             
         }
         
@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private IEnumerator Reset()
+    private IEnumerator Waitforsec()
     {
-        yield return new WaitForSeconds(1);
-
         gameHasEnded = true;
-        Debug.Log(Time.time);
         Debug.Log("End Game");
         FindObjectOfType<CircleControl>().speed = 0;
+        yield return new WaitForSeconds(1);
+
         gameoverui.SetActive(true);
     }
+
 }
