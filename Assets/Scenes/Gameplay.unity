@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deatheffect: {fileID: 1996288441504328, guid: 5bbb116fafd80d046b40f3084953c428,
     type: 2}
-  audios: {fileID: 1172795732}
+  diesound: {fileID: 1880101648087336, guid: 4fd96de8f81aeea4288c015c717b21bc, type: 2}
 --- !u!82 &1172795732
 AudioSource:
   m_ObjectHideFlags: 0
