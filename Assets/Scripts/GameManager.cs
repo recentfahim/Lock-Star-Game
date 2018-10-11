@@ -14,13 +14,8 @@ public class GameManager : MonoBehaviour {
     {
         if(gameHasEnded == false)
         {
-            coroutine = Reset(restartdelay);
-            StartCoroutine(coroutine);
-            gameHasEnded = true;
-            Debug.Log(Time.time);
-            Debug.Log("End Game");
-            FindObjectOfType<CircleControl>().speed = 0;
-            gameoverui.SetActive(true);
+            StartCoroutine(Reset());
+            
         }
         
     }
@@ -29,11 +24,14 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private IEnumerator Reset(float Count)
+    private IEnumerator Reset()
     {
-        yield return new WaitForSeconds(Count);
-        Debug.Log(Time.time);
+        yield return new WaitForSeconds(1);
 
-        yield return null;
+        gameHasEnded = true;
+        Debug.Log(Time.time);
+        Debug.Log("End Game");
+        FindObjectOfType<CircleControl>().speed = 0;
+        gameoverui.SetActive(true);
     }
 }
