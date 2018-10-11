@@ -7,13 +7,7 @@ public class Mover : MonoBehaviour {
     private bool check;
     [SerializeField]
     private GameObject deatheffect;
-    [SerializeField]
-    private AudioSource audios;
-
-    private void Start()
-    {
-        audios = GetComponent<AudioSource>();
-    }
+    public GameObject diesound;
 
     private void Update()
     {
@@ -26,8 +20,8 @@ public class Mover : MonoBehaviour {
             }
             else
             {
+                Instantiate(diesound, transform.position, Quaternion.identity);
                 //Debug.Log("Wrong");
-                audios.Play();
                 Instantiate(deatheffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 FindObjectOfType<GameManager>().EndGame();
@@ -45,8 +39,7 @@ public class Mover : MonoBehaviour {
         }
         if(col.gameObject.tag == "coll")
         {
-
-            audios.Play();
+            Instantiate(diesound, transform.position, Quaternion.identity);
             Instantiate(deatheffect,transform.position, Quaternion.identity);
             FindObjectOfType<GameManager>().EndGame();
             //Debug.Log("Game Over");

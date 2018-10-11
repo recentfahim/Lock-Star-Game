@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour {
     public bool gameHasEnded = false;
     public float restartdelay = 5f;
     public GameObject gameoverui;
-    private IEnumerator coroutine;
 
 
     public void EndGame()
