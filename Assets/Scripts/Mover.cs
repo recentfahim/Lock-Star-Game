@@ -20,6 +20,7 @@ public class Mover : MonoBehaviour {
             else
             {
                 //Debug.Log("Wrong");
+                Instantiate(deatheffect, transform.position, Quaternion.identity);
                 FindObjectOfType<GameManager>().EndGame();
             }
         }
@@ -35,7 +36,7 @@ public class Mover : MonoBehaviour {
         }
         if(col.gameObject.tag == "coll")
         {
-            destroyHoldEffect(deatheffect);
+            Instantiate(deatheffect,transform.position, Quaternion.identity);
             FindObjectOfType<GameManager>().EndGame();
             //Debug.Log("Game Over");
             Destroy(this.gameObject);
@@ -43,20 +44,6 @@ public class Mover : MonoBehaviour {
         }
     }
 
-    IEnumerator destroyHoldEffect(GameObject particles)
-    {
-        while (particles.GetComponent<ParticleSystem>().time > 0.5f)
-        {
-            yield return null;
-        }
-
-        particles.GetComponent<ParticleSystem>().loop = false;
-
-        yield return new WaitForSeconds(2f);
-        if (particles)
-        {
-            Destroy(particles);
-        }
-    }
+    
 
 }

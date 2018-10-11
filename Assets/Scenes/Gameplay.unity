@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -708,7 +708,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13389999, g: 0.14419675, b: 0.16037738, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -955,6 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85933d92cf7a51a44a86b042a8405697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deatheffect: {fileID: 1996288441504328, guid: 5bbb116fafd80d046b40f3084953c428,
+    type: 2}
 --- !u!1 &1420474235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
