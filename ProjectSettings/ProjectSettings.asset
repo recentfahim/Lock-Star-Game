@@ -646,9 +646,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 
-  projectName: Template_2D
-  organizationId: 
+  cloudProjectId: 0fc125c0-b50f-48cd-9665-f23320611e54
+  projectName: Lock Star
+  organizationId: fahim-ahmed-3814556
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

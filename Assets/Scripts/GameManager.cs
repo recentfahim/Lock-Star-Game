@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
         {
             StartCoroutine(Waitforsec());
             
+            
         }
         
     }
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
 
         gameoverui.SetActive(true);
+        UnityAdManager.instance.ShowAd();
     }
 
 }
